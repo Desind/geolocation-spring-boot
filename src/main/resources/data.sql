@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS location;
 
 CREATE TABLE user (
     userId INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(30),
+    username VARCHAR(30) UNIQUE,
     password VARCHAR(30)
 );
 

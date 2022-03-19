@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new AuthenticationFilter(authenticationManagerBean(),userService));
         http.addFilterBefore(new AuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -67,8 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
+    //@Bean
+    //public PasswordEncoder encoder() {
+    //    return new BCryptPasswordEncoder();
+    //}
 }

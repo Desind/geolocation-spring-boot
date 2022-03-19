@@ -1,5 +1,6 @@
 package com.lukaszzaranek.geoloc.service;
 
+import com.lukaszzaranek.geoloc.dto.NewUserDto;
 import com.lukaszzaranek.geoloc.model.User;
 import com.lukaszzaranek.geoloc.repository.UserRepository;
 import com.lukaszzaranek.geoloc.service.interfaces.UserService;
@@ -33,7 +34,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 
+    @Override
     public User getUserByUsername(String username){
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User saveUser(NewUserDto newUserDto) {
+        User newUser = new User();
+        newUser.setUsername(newUserDto.getUsername());
+        newUser.setPassword(passwordEncoder.encode(newUserDto.getPassword()));
+        //TODO: CATCH NON UNIQUE USERNAME
+        return userRepository.save(newUser);
     }
 }
