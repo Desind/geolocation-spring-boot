@@ -1,5 +1,6 @@
 package com.lukaszzaranek.geoloc.service;
 
+import com.lukaszzaranek.geoloc.dto.LocationDto;
 import com.lukaszzaranek.geoloc.dto.NewLocationDto;
 import com.lukaszzaranek.geoloc.model.Location;
 import com.lukaszzaranek.geoloc.model.User;
@@ -10,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -59,5 +62,16 @@ public class LocationServiceImpl implements LocationService {
             saveMessage.put("error", e.getMessage());
             return saveMessage;
         }
+    }
+
+    @Override
+    public List<LocationDto> getLocation(String username){
+        User user = userRepository.findByUsername(username);
+        List<Location> locations = locationRepository.findByUser(user);
+        List<LocationDto> locationDtos = new ArrayList<>();
+        for(Location l: locations){
+            locationDtos.add(new LocationDto(l.getId(),l.getDeviceName(),l.getLatitude(),l.getLongitude()));
+        }
+        return locationDtos;
     }
 }
