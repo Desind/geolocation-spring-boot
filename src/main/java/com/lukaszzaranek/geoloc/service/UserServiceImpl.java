@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -40,11 +42,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User saveUser(NewUserDto newUserDto) {
+    public Map<String, String> saveUser(NewUserDto newUserDto) {
+        Map<String, String> message = new HashMap<>();
+        if(newUserDto.getUsername().length() < 5 || newUserDto.getPassword().length() < 5){
+            message.put("message", "Username or password too short");
+            return message;
+        }
         User newUser = new User();
         newUser.setUsername(newUserDto.getUsername());
         newUser.setPassword(passwordEncoder.encode(newUserDto.getPassword()));
-        //TODO: CATCH NON UNIQUE USERNAME
-        return userRepository.save(newUser);
+        try{
+            User user = userRepository.save(newUser);
+            message.put("username", user.getUsername());
+        }catch (Exception e){
+            message.put("message", "Username is already taken");
+        }
+        return message;
     }
 }
