@@ -54,7 +54,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .withExpiresAt(date)
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
-                .withClaim("username", user.getUsername())
                 .withClaim("user_id", userClass.getUserId())
                 .sign(algorithm);
         String refreshToken = JWT.create()

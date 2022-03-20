@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 @AllArgsConstructor
 @Slf4j
 public class UserController {
     public final UserService userService;
 
-    @PostMapping("/user")
+    @PostMapping()
     public ResponseEntity<?> saveNewCookUser(@RequestBody NewUserDto newUserDto){
         Map<String, String> message = userService.saveUser(newUserDto);
         if (message.get("username") != null){

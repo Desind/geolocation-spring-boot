@@ -23,7 +23,7 @@ import java.util.Map;
 @Slf4j
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-    final UserRepository userRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
