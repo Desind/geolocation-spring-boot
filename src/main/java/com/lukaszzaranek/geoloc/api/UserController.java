@@ -19,7 +19,7 @@ import java.util.Map;
 public class UserController {
     public final UserService userService;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<?> saveNewCookUser(@RequestBody NewUserDto newUserDto){
         Map<String, String> message = userService.saveUser(newUserDto);
         if (message.get("username") != null){

@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         try{
             User user = userRepository.save(newUser);
             message.put("username", user.getUsername());
+            log.info(user.toString());
         }catch (Exception e){
             message.put("message", "Username is already taken");
         }

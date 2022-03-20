@@ -4,15 +4,16 @@ DROP TABLE IF EXISTS location;
 
 CREATE TABLE user (
     userId INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(30) UNIQUE,
-    password VARCHAR(30)
+    username VARCHAR UNIQUE,
+    password VARCHAR
 );
 
 CREATE TABLE location (
 	id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	userId INTEGER UNSIGNED,
-    deviceName VARCHAR(30),
+    deviceName VARCHAR,
     latitude INTEGER,
     longitude INTEGER,
     FOREIGN KEY (userId) REFERENCES user(userId)
 );
+

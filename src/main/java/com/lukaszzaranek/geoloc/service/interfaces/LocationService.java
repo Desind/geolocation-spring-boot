@@ -1,8 +1,10 @@
 package com.lukaszzaranek.geoloc.service.interfaces;
 
 import com.lukaszzaranek.geoloc.dto.NewLocationDto;
-import com.lukaszzaranek.geoloc.model.Location;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public interface LocationService {
-    Location saveLocation(NewLocationDto newLocationDto);
+    Map<String, String> saveLocation(NewLocationDto newLocationDto, String username);
 }
