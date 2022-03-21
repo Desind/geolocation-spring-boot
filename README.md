@@ -6,10 +6,11 @@ Rozwiązanie zadania znajduje się w pakiecie `tree` znajdującego się w folder
 
 Rozwiązanie zadania znajduje się w pakiecie `geoloc` znajdującego się w folderze src > main > java.
 
-* Usługa pozwala na rejestrację oraz logowanie użytkowników przy użyciu Spring Security. 
-* Jako sposób uwierzytelniania zastosowane zostały klucze JWT. 
-* W celu prostego testowania aplikacji, wykorzystana została baza danych H2, umożliwiając korzystanie z bazy lokalnej bez dodatkowej konfiguracji.
-* Do obsługi bazy danych po stronie serwera został wykorzystane JPA & Hibernate.
+* Usługa pozwala na rejestrację oraz logowanie użytkowników przy użyciu `Spring Security`. 
+* Jako sposób uwierzytelniania zastosowane zostały klucze `JWT`. 
+* W celu prostego testowania aplikacji, wykorzystana została baza danych `H2`, umożliwiając korzystanie z bazy lokalnej bez dodatkowej konfiguracji.
+* Do obsługi bazy danych po stronie serwera został wykorzystane `JPA & Hibernate`.
+* Testy jednostkowe powstały w oparciu o `JUnit`
 
 ##### Rejestracja użytkownika
 ![register](https://i.imgur.com/28UktVx.png)
