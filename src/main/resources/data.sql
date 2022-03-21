@@ -16,4 +16,3 @@ CREATE TABLE location (
     longitude INTEGER,
     FOREIGN KEY (userId) REFERENCES user(userId)
 );
-

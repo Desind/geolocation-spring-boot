@@ -44,7 +44,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public Map<String, String> saveUser(NewUserDto newUserDto) {
         Map<String, String> message = new HashMap<>();
-        if(newUserDto.getUsername().length() < 5 || newUserDto.getPassword().length() < 5){
+        if(newUserDto.getUsername() == null
+                || newUserDto.getPassword() == null
+                || newUserDto.getUsername().length() < 5
+                || newUserDto.getPassword().length() < 5
+        ){
             message.put("message", "Username or password too short");
             return message;
         }
